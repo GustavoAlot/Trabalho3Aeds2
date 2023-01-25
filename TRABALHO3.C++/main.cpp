@@ -16,6 +16,7 @@ int main() {
   No *ordenado = NULL;
 
   No *aux;
+  int impressao = 0;
   int newop = 0;
   string placa;
   char resposta;
@@ -24,9 +25,7 @@ int main() {
 
   preenche_lista();
 
-  /*
-   * Escrita do menu na tela.
-   */
+
   while (newop != 7) {
     cout << "[1] Incluir novo veículo." << endl;
     cout << "[2] Remover veiculo." << endl;
@@ -91,17 +90,61 @@ int main() {
       break;
 
     case 4:
+        preencheArvoreBusca(*raiz, lista);
+        //MONTAR ARVORE AVL AINDA
+      cout << "Arvores montadas!" << endl;
 
-      //OPcao de arvores
+
+
       break;
 
     case 5:
-      //relatorio das arvores
-      break;
+
+    while(impressao != 5){
+
+      cout << "[1] Arvore binaria em ordem crescente." << endl;
+      cout << "[2] Arvire binaria em ordem de insercao." << endl;
+      cout << "[3] Arvore avl." << endl;
+      cout << "[5] Voltar para o menu principal." << endl;
+      
+      cout << "Insira a opção desejada:" << endl;
+
+      cin >> impressao;
+
+
+
+        switch (impressao)
+        {
+        case 1:
+          cout << "Arvore binaria em ordem crescente dos valores " << endl;
+          imprimir_versao_2(*raiz);
+          printf("\n\tAltura da arvore : %d\n\n", altura(raiz));
+          printf("\nquantidade de nos: %d\n", quantidade_nos(raiz));
+
+          break;
+        
+        case 2: 
+          cout << "Arvore binaria em ordem de insercao" << endl;
+          imprimir_versao_1(*raiz);
+          printf("\n\tAltura da arvore : %d\n\n", altura(raiz));
+          printf("\nquantidade de nos: %d\n", quantidade_nos(raiz));
+
+          break;
+        case 3:
+        //  FAZER FUNCOES PARA ARVORE AVL
+          break;
+        
+        default:
+          cout << "\n\t\tOpção inválida.\n\n";
+          break;
+        }
+    }
+
+      
 
     case 6:
-      aux = lista;
-      escreve_lista();
+      aux = lista;            
+      escreve_lista(aux);
       break;
 
     case 7:
@@ -112,6 +155,8 @@ int main() {
         lista = lista->prox;
         free(deletando);
       }
+
+      
       
       return 0;
 

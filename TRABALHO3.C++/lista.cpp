@@ -200,6 +200,4 @@ void relatorio(){
              << aux->veiculo->valor << " " << endl;
         aux = aux->prox;
       }
-}      
-
-
+}
