@@ -1,24 +1,39 @@
 #include "lista.h"
-#include <stdlib.h>
+#include <bits/stdc++.h>
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace std;
 
 
-int main(){
-    No *aux;
-    int newop = 0;
-    string placa;
-    char resposta;
-    No *buscado;
-    No *removido;
+int main() {
+  /*
+   * Declaração de variáveis utilizadas.
+   */
+  No *fila = NULL;
+  No *pilha = NULL;
+  No *lista = NULL;
+  No *ordenado = NULL;
 
-while (newop != 7) {
+  No *aux;
+  int newop = 0;
+  string placa;
+  char resposta;
+  No *buscado;
+  No *removido;
+
+  preenche_lista();
+
+  /*
+   * Escrita do menu na tela.
+   */
+  while (newop != 7) {
     cout << "[1] Incluir novo veículo." << endl;
-    cout << "[2] Busca por placa e remoção." << endl;
-    cout << "[3] Construir fila." << endl;
-    cout << "[4] Ordenação por placa." << endl;
-    cout << "[5] Construir pilha." << endl;
-    cout << "[6] Relatório." << endl;
+    cout << "[2] Remover veiculo." << endl;
+    cout << "[3] Buscas." << endl;
+    cout << "[4] Montar arvores busca e avl." << endl;
+    cout << "[5] Relatorio das arvores." << endl;
+    cout << "[6] Relatório da lista ." << endl;
     cout << "[7] Sair do programa." << endl;
     cout << "Insira a opção desejada:" << endl;
     aux = lista;
@@ -62,86 +77,42 @@ while (newop != 7) {
       break;
 
     case 3:
-      cout << "Construção da fila.\n" << endl;
-      while (aux) {
-        if (aux->veiculo->cambio == "Automático") {
-          insereFim(&fila, aux);
+      cout << "Insira a placa:" << endl;
+      cin >> placa;
+      buscado = buscar(lista, placa);
 
-        } else {
-          removido = removeInicio(&fila);
-        }
-        aux = aux->prox;
+      if (buscado) {
+        cout << "Veículo encontrado." << endl;
+      }else{
+        cout << "Veículo não existente no BD." << endl;
+
       }
-      cout << "Final da fila" << endl;
-      while (fila) {
-        cout << fila->veiculo->modelo << " " << fila->veiculo->placa;
-        cout << "\n";
-        fila = fila->prox;
-      }
-      cout << "Início da fila" << endl;
-      cout << "\n";
+
       break;
 
     case 4:
 
-      cout << "Ordenação por placa.\n";
-      ordenacao(lista, &ordenado);
-      cout << "\n";
+      //OPcao de arvores
       break;
 
     case 5:
-      cout << "Construção da pilha.\n";
-      while (aux) {
-        if (aux->veiculo->direcao == "Hidráulica") {
-          pilha = empilhar(pilha, aux);
-        } else {
-          desempilha(&pilha);
-        }
-        aux = aux->prox;
-      }
-      cout << "Topo da pilha" << endl;
-      while (pilha) {
-        cout << pilha->veiculo->modelo << " " << pilha->veiculo->placa;
-        cout << "\n";
-        pilha = pilha->prox;
-      }
-      cout << "Base da pilha" << endl;
-      cout << "\n";
+      //relatorio das arvores
       break;
 
     case 6:
       aux = lista;
-      while (aux) {
-        cout << aux->veiculo->modelo << " " << aux->veiculo->marca << " "
-             << aux->veiculo->tipo << " " << aux->veiculo->ano << " "
-             << aux->veiculo->km << " " << aux->veiculo->potencia << " "
-             << aux->veiculo->combustivel << " " << aux->veiculo->cambio << " "
-             << aux->veiculo->direcao << " " << aux->veiculo->cor << " "
-             << aux->veiculo->portas << " " << aux->veiculo->placa << " "
-             << aux->veiculo->valor << " " << endl;
-        aux = aux->prox;
-      }
+      escreve_lista();
       break;
 
     case 7:
       cout << "Programa finalizado." << endl;
-      printarq(lista);
 
       while (lista) {
         No *deletando = lista;
         lista = lista->prox;
         free(deletando);
       }
-      while (fila) {
-        No *deletando = fila;
-        fila = fila->prox;
-        free(deletando);
-      }
-      while (pilha) {
-        No *deletando = pilha;
-        pilha = pilha->prox;
-        free(deletando);
-      }
+      
       return 0;
 
       break;
