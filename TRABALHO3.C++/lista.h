@@ -36,6 +36,7 @@ Tveiculo *new_carro(string placa);
 No *insere_veiculo(No **lista, string placa);
 No *buscar(No *lista, string placa);
 void relatorio();
+void escreve_lista();
 
 
 #endif
