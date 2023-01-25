@@ -4,7 +4,8 @@
 
 using namespace std;
 
-
+No* lista = NULL;
+No* aux = NULL;
 
 void inseredotxt(No **lista, No *novo) {
   No *aux = *lista;
@@ -19,7 +20,19 @@ void inseredotxt(No **lista, No *novo) {
   }
 }
 
+void escreve_lista(No * aux){
+  while (aux) {
+        cout << aux->veiculo->modelo << " " << aux->veiculo->marca << " "
+             << aux->veiculo->tipo << " " << aux->veiculo->ano << " "
+             << aux->veiculo->km << " " << aux->veiculo->potencia << " "
+             << aux->veiculo->combustivel << " " << aux->veiculo->cambio << " "
+             << aux->veiculo->direcao << " " << aux->veiculo->cor << " "
+             << aux->veiculo->portas << " " << aux->veiculo->placa << " "
+             << aux->veiculo->valor << " " << endl;
+        aux = aux->prox;
+      }
 
+}
 
 
 void preenche_lista(){
