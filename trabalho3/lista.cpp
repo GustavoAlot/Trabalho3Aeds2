@@ -1,11 +1,7 @@
-#include <bits/stdc++.h>
 #include "lista.h"
-
-
+#include <bits/stdc++.h>
 
 using namespace std;
-
-
 
 void inseredotxt(No **lista, No *novo) {
   No *aux = *lista;
@@ -19,7 +15,6 @@ void inseredotxt(No **lista, No *novo) {
     aux->prox = novo;
   }
 }
-
 
 No *remove_veiculo(No **lista, string placa) {
 
@@ -58,8 +53,6 @@ void printarq(No *lista) {
     lista = lista->prox;
   }
 }
-
-
 
 Tveiculo *new_carro(string placa) {
   Tveiculo *newcarro = new (Tveiculo);
@@ -107,7 +100,6 @@ Tveiculo *new_carro(string placa) {
   return newcarro;
 }
 
-
 No *insere_veiculo(No **lista, string placa) {
 
   No *novo = new (No);
@@ -116,7 +108,6 @@ No *insere_veiculo(No **lista, string placa) {
   *lista = novo;
   return novo;
 }
-
 
 No *buscar(No *lista, string placa) {
   No *removido = NULL;
@@ -127,19 +118,18 @@ No *buscar(No *lista, string placa) {
   return removido;
 }
 
-
-
-void relatorio(No *lista){
-    No * aux = NULL;
-    aux = lista;
-      while (aux) {
-        cout << aux->veiculo->modelo << " " << aux->veiculo->marca << " "
-             << aux->veiculo->tipo << " " << aux->veiculo->ano << " "
-             << aux->veiculo->km << " " << aux->veiculo->potencia << " "
-             << aux->veiculo->combustivel << " " << aux->veiculo->cambio << " "
-             << aux->veiculo->direcao << " " << aux->veiculo->cor << " "
-             << aux->veiculo->portas << " " << aux->veiculo->placa << " "
-             << aux->veiculo->valor << " " << endl;
-        aux = aux->prox;
-      }
+void relatorio(No *lista) {
+  No *aux = NULL;
+  aux = lista;
+  while (aux) {
+    cout << aux->veiculo->modelo << " " << aux->veiculo->marca << " "
+         << aux->veiculo->tipo << " " << aux->veiculo->ano << " "
+         << aux->veiculo->km << " " << aux->veiculo->potencia << " "
+         << aux->veiculo->combustivel << " " << aux->veiculo->cambio << " "
+         << aux->veiculo->direcao << " " << aux->veiculo->cor << " "
+         << aux->veiculo->portas << " " << aux->veiculo->placa << " "
+         << aux->veiculo->valor << " " << endl;
+    aux = aux->prox;
+  }
 }
+
