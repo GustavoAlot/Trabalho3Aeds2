@@ -1,27 +1,19 @@
 
+#include "arvore.h"
+#include "lista.h"
 #include <bits/stdc++.h>
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h"
-
-
 
 using namespace std;
-
-
-
-
-
 
 int main() {
   /*
    * Declaração de vari
    áveis utilizadas.
    */
-  
-  
-  
+  NoArvB *raiz = NULL;
   No *lista = NULL;
   No *ordenado = NULL;
 
@@ -33,7 +25,34 @@ int main() {
   No *buscado;
   No *removido;
 
-  
+  ifstream myfile("BD_veiculos_2.txt");
+
+  if (myfile.is_open()) {
+    do {
+      No *novoNo = new (No);
+      inseredotxt(&lista, novoNo);
+
+      Tveiculo *newveiculo = new (Tveiculo);
+      myfile >> newveiculo->modelo;
+      myfile >> newveiculo->marca;
+      myfile >> newveiculo->tipo;
+      myfile >> newveiculo->ano;
+      myfile >> newveiculo->km;
+      myfile >> newveiculo->potencia;
+      myfile >> newveiculo->combustivel;
+      myfile >> newveiculo->cambio;
+      myfile >> newveiculo->direcao;
+      myfile >> newveiculo->cor;
+      myfile >> newveiculo->portas;
+      myfile >> newveiculo->placa;
+      myfile >> newveiculo->valor;
+      novoNo->veiculo = newveiculo;
+
+    } while (!myfile.eof());
+
+    myfile.close();
+  } else
+    cout << "\n\n\n ARQUIVO NÃO ENCONTRADO. \n\n\n" << endl;
 
   while (newop != 7) {
     cout << "[1] Incluir novo veículo." << endl;
@@ -91,73 +110,61 @@ int main() {
 
       if (buscado) {
         cout << "Veículo encontrado." << endl;
-      }else{
+      } else {
         cout << "Veículo não existente no BD." << endl;
-
       }
 
       break;
+          
 
     case 4:
-    /* 
-        preencheArvoreBusca(&raiz, lista);
-        //MONTAR ARVORE AVL AINDA
       cout << "Arvores montadas!" << endl;
-
-    */
+            
+            inserir_versao_1(raiz,lista);
+          
+          
+      
+      //ainda falta a AVL
 
       break;
 
     case 5:
-    /*
+      while (impressao != 5) {
+        cout << "[1] Arvore binaria em ordem crescente." << endl;
+        cout << "[2] Arvire binaria em ordem de insercao." << endl;
+        cout << "[3] Arvore avl." << endl;
+        cout << "[5] Voltar para o menu principal." << endl;
 
-    while(impressao != 5){
-
-      cout << "[1] Arvore binaria em ordem crescente." << endl;
-      cout << "[2] Arvire binaria em ordem de insercao." << endl;
-      cout << "[3] Arvore avl." << endl;
-      cout << "[5] Voltar para o menu principal." << endl;
-      
-      cout << "Insira a opção desejada:" << endl;
-
-      cin >> impressao;
-
-
-
-        switch (impressao)
-        {
+        cout << "Insira a opção desejada:" << endl;
+        cin >> impressao;
+        switch (impressao) {
         case 1:
           cout << "Arvore binaria em ordem crescente dos valores " << endl;
           imprimir_versao_2(raiz);
           printf("\n\tAltura da arvore : %d\n\n", altura(raiz));
           printf("\nquantidade de nos: %d\n", quantidade_nos(raiz));
-
           break;
-        
-        case 2: 
+
+        case 2:
           cout << "Arvore binaria em ordem de insercao" << endl;
           imprimir_versao_1(raiz);
           printf("\n\tAltura da arvore : %d\n\n", altura(raiz));
           printf("\nquantidade de nos: %d\n", quantidade_nos(raiz));
-
           break;
         case 3:
-        //  FAZER FUNCOES PARA ARVORE AVL
+          //  FAZER FUNCOES PARA ARVORE AVL
           break;
-        
+
         default:
           cout << "\n\t\tOpção inválida.\n\n";
           break;
         }
       }
-      */
-       
-    
+
       break;
-      
 
     case 6:
-      aux = lista;            
+      aux = lista;
       relatorio(aux);
       break;
 
@@ -170,8 +177,6 @@ int main() {
         free(deletando);
       }
 
-      
-      
       return 0;
 
       break;
