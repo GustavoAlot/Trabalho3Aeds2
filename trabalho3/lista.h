@@ -3,11 +3,6 @@
 #define LISTA_H
 #include <bits/stdc++.h>
 
-
-
-
-
-
 using namespace std;
 
 typedef struct {
@@ -31,7 +26,6 @@ typedef struct no {
   struct no *prox;
 } No;
 
-
 void inseredotxt(No **lista, No *novo);
 No *remove_veiculo(No **lista, string placa);
 void printarq(No *lista);
@@ -39,8 +33,7 @@ Tveiculo *new_carro(string placa);
 No *insere_veiculo(No **lista, string placa);
 No *buscar(No *lista, string placa);
 void relatorio(No *lista);
-
-
+void preenche_lista(No **lista);
 
 
 #endif
