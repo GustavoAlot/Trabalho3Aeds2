@@ -14,6 +14,7 @@ int main() {
      áveis utilizadas.
      */
     NoArvB *raiz = NULL;
+    NoArvA *raizAVL = NULL;
     No *lista = NULL;
     No *ordenado = NULL;
 
@@ -24,6 +25,8 @@ int main() {
     char resposta;
     No *buscado;
     No *removido;
+    bool alterou;
+
 
     ifstream myfile("BD_veiculos_2.txt");
 
@@ -122,21 +125,25 @@ int main() {
                 aux = lista;
                 while (aux) {
                     inserir_versao_3(&raiz, aux);
+                    inserirAVL(&raizAVL, aux, alterou);
+                    atualizarBalanceamentoTotal(raizAVL);
                     aux = aux->prox;
                 }
-
-
-
-                //ainda falta a AVL
+                /*cout<<raizAVL->veiculo->valor<<endl;
+                cout<<raizAVL->esq->veiculo->valor<<endl;
+                cout<<raizAVL->esq->esq->veiculo->valor<<endl;*/
 
                 break;
 
             case 5:
-                while (impressao != 5) {
+                while (impressao != 7) {
                     cout << "[1] Arvore binária em ordem." << endl;
                     cout << "[2] Arvire binária em pós-ordem." << endl;
                     cout << "[3] Arvore binária em pré-ordem." << endl;
-                    cout << "[5] Voltar para o menu principal." << endl;
+                    cout << "[4] Arvore AVL em em ordem." << endl;
+                    cout << "[5] Arvore AVL em pós-ordem." << endl;
+                    cout << "[6] Arvore AVL em pré-ordem." << endl;
+                    cout << "[7] Voltar para o menu principal." << endl;
 
                     cout << "Insira a opção desejada:" << endl;
                     cin >> impressao;
@@ -154,11 +161,32 @@ int main() {
                             printf("\n\tAltura da arvore : %d\n\n", altura(raiz));
                             printf("\nquantidade de nos: %d\n", quantidade_nos(raiz));
                             break;
+                            
                         case 3:
                             cout << "Arvore binaria pré ordem" << endl;
                             imprimir_pre_ordem(raiz);
                             printf("\n\tAltura da arvore : %d\n\n", altura(raiz));
                             printf("\nquantidade de nos: %d\n", quantidade_nos(raiz));
+                            break;
+
+                        case 4:
+                            cout << "Arvore AVL em ordem" << endl;
+                            imprimir_em_ordem(raizAVL);
+                            printf("\n\tAltura da arvore : %d\n\n", altura(raizAVL));
+                            printf("\nquantidade de nos: %d\n", quantidade_nos(raizAVL));
+                            break;
+
+                        case 5:
+                            cout << "Arvore AVL pós ordem" << endl;
+                            imprimir_pos_ordem(raizAVL);
+                            printf("\n\tAltura da arvore : %d\n\n", altura(raizAVL));
+                            printf("\nquantidade de nos: %d\n", quantidade_nos(raizAVL));
+                            break;
+                        case 6:
+                            cout << "Arvore AVL pré ordem" << endl;
+                            imprimir_pre_ordem(raizAVL);
+                            printf("\n\tAltura da arvore : %d\n\n", altura(raizAVL));
+                            printf("\nquantidade de nos: %d\n", quantidade_nos(raizAVL));
                             break;
 
                         default:

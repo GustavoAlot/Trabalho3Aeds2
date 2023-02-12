@@ -29,4 +29,4 @@ COROLLA TOYOTA Sedã 2015 100000 2 Flex Automático Hidráulica Prata 4 OQC7488 
 CIVIC HONDA Sedã 2016 82000 1.8 Flex Automático Hidráulica Branco 4 PAE2146 73633 
 XC-60 VOLVO SUV 2015 97000 2.4 Gasolina Automático Elétrica Preto 4 MAN7774 92988 
 CITY HONDA Sedan 2019 38000 1.5 Flex Automático Hidráulica Prata 4 APX6545 901466 
-0 0 0 0 0 0 0 0   0  0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 
